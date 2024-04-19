@@ -1,5 +1,8 @@
 'use client';
 
+import Logo from "./navbar/Logo";
+import Search from "./navbar/Search";
+
 
 
 interface ContainerProps {
@@ -20,7 +23,7 @@ const Container:React.FC<ContainerProps> =({
          px-4
         "
         >
-            {children}
+          {children}
         </div>
     )
 }
