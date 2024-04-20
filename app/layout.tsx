@@ -8,7 +8,7 @@ const inter = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Airbnb",
   description: "Airbnb clone",
-};
+  }
 
 
 
@@ -19,6 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+        <head>
+    <link rel="icon" href="/public/favicon.ico" sizes="any" />
+  </head>
       <body className={inter.className}>
         <Navbar/>
         </body>
