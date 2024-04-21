@@ -4,6 +4,8 @@ import "./globals.css";
 import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import Modal from "./components/modals/Modal";
+import RegisterModal from "./components/modals/RegisterModal";
+import ToasterProvider from "./providers/ToasterProviders";
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -24,8 +26,9 @@ export default function RootLayout({
       
       <body className={inter.className}>
         <ClientOnly>
+          <ToasterProvider/>
         <Navbar/>
-        <Modal actionLabel="Submit" isOpen title="Connexion ou inscription" />
+        <RegisterModal/>
         </ClientOnly>
         {children}
         </body>

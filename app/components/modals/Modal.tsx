@@ -141,7 +141,9 @@ secondaryAction()
                                         <Button  label={actionLabel} disabled={disabled} onClick={handleSubmit} />
                                        {secondaryActionLabel && secondaryAction &&(<Button outline label={secondaryActionLabel} disabled={disabled} onClick={handleSecondaryAction} />)}
                                     </div>
+                                    {footer}
                                 </div>
+                              
                         </div>
                     </div>
             </div>
