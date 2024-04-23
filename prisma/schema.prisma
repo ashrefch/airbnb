@@ -12,3 +12,12 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+
+model listing{
+  id String @id @default (auto()) @map ("_id) @db.ObjectId
+  title String
+  description String
+  imageSrc String 
+  createdAt DateTime @default(now())
+}
