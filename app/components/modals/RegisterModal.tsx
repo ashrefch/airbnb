@@ -18,8 +18,10 @@ import { FcGoogle } from 'react-icons/fc'
 import { AiFillGithub } from 'react-icons/ai'
 
 
+
 const RegisterModal=()=>{
     const registerModal = useRegisterModal()
+
     const [isLoading, setIsLoading] = useState(false)
     const {
         register,

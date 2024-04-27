@@ -5,7 +5,9 @@ import Navbar from "./components/navbar/Navbar";
 import ClientOnly from "./components/ClientOnly";
 import Modal from "./components/modals/Modal";
 import RegisterModal from "./components/modals/RegisterModal";
+import LoginModal from './components/modals/LoginModal'
 import ToasterProvider from "./providers/ToasterProviders";
+
 
 const inter = Nunito({ subsets: ["latin"] });
 
@@ -26,9 +28,11 @@ export default function RootLayout({
       
       <body className={inter.className}>
         <ClientOnly>
-          <ToasterProvider/>
-        <Navbar/>
+        <ToasterProvider/>
+        
         <RegisterModal/>
+        <LoginModal/>
+        <Navbar/>
         </ClientOnly>
         {children}
         </body>
