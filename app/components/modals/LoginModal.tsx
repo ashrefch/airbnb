@@ -60,6 +60,12 @@ const LoginModal=()=>{
         
     }
 
+    const handleToggleLogin=()=>{
+       
+        loginModal.onClose()
+        registerModal.onOpen()
+    }
+
     const bodyContent=(
         <div className='flex flex-col gap-4'> 
             <Heading 
@@ -105,8 +111,8 @@ const LoginModal=()=>{
 
             <div className='text-neutral-500 text-center mt-4 font-light '>
                 <div className=' justify-center flex flex-row items-center gap-2'>
-                <div > Already have an account ?</div>
-                <div onClick={loginModal.onClose} className='text-neutral-800 cursor-pointer hover:underline'>Log in </div>
+                <div > You do not have an account ?</div>
+                <div onClick={ ()=> handleToggleLogin() } className='text-neutral-800 cursor-pointer hover:underline'>sign in </div>
                 </div>
             </div>
         </div>
