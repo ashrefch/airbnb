@@ -49,6 +49,7 @@ const LoginModal=()=>{
             redirect:false
         }).then((callback)=>{
             setIsLoading(false)
+            loginModal.onClose()
             if(callback?.ok){
                 toast.success('logged in !')
                 router.refresh()
