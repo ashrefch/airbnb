@@ -1,3 +1,4 @@
+import getCurrentUser from "./actions/getCurrentUser";
 import getListing from "./actions/getListing";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
@@ -7,6 +8,7 @@ import ListingCard from "./components/ListingCard";
 
 export default async function Home() {
   const listings = await getListing()
+  const currentUser= await getCurrentUser()
  
   if(listings.length===0) return (
     <ClientOnly>
@@ -34,6 +36,7 @@ export default async function Home() {
             <ListingCard
             key={listing.id}
             data={listing}
+            currentUser={currentUser}
             />
           )
         })}

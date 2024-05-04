@@ -9,6 +9,7 @@ import useCountries from '../hooks/useCountries';
 import {format} from 'date-fns'
 import Image from 'next/image';
 import HeartButton from './HeartButton';
+import Button from './Button';
 
 interface ListingCardProps{
     data:Listing;
@@ -98,6 +99,14 @@ currentUser
                     </div>
             )}
         </div>
+        {onAction && actionLabel && (
+            <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+            />
+        )}
         </div>
        
     </div>
