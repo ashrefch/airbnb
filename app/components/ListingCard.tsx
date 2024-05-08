@@ -3,7 +3,7 @@
 
 import { Listing, Reservations } from '@prisma/client'
 import React, { useCallback, useMemo } from 'react'
-import { SafeUser } from '../types';
+import { SafeUser, safeListing } from '../types';
 import { useRouter } from 'next/navigation';
 import useCountries from '../hooks/useCountries';
 import {format} from 'date-fns'
@@ -12,7 +12,7 @@ import HeartButton from './HeartButton';
 import Button from './Button';
 
 interface ListingCardProps{
-    data:Listing;
+    data:safeListing;
     reservation?:Reservations;
     onAction?:(id:string)=>void;
     disabled?:boolean;
@@ -51,8 +51,8 @@ currentUser
         if(!reservation){
             return null;
         }
-        const start=new Date(reservation.startTime)
-        const end=new Date(reservation.endTime)
+        const start=new Date(reservation.startDate)
+        const end=new Date(reservation.endDate)
         return `${format(start,'PP')} - ${format(end, 'PP')}`
     },[reservation])
   return (
