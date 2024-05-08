@@ -1,8 +1,7 @@
 'use client'
 
 import { categories } from '@/app/components/navbar/Categories';
-import { SafeUser, safeListing } from '@/app/types'
-import { Reservations } from '@prisma/client'
+import { SafeUser, safeListing, safeReservations } from '@/app/types'
 import Container from '@/app/components/Container';
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import ListingHead from '@/app/components/ListingHead';
@@ -22,11 +21,11 @@ const initialDateRange={
 }
 
 interface ListingClientProps{
-    reservations?:Reservations[];
+    reservations?: safeReservations[];
     listing: safeListing & {
         user:SafeUser
     };
-    currentUser?: SafeUser | null 
+    currentUser?: SafeUser | null;
 }
 
 const ListingClient : React.FC<ListingClientProps> =({
@@ -39,25 +38,27 @@ const ListingClient : React.FC<ListingClientProps> =({
 
     const disabledDates=useMemo(()=>{
         let dates:Date[]=[];
-        reservations.forEach((reservation:any)=>{
+        reservations.forEach((reservation)=>{
             const range = eachDayOfInterval({
                 start: new Date(reservation.startDate),
                 end: new Date(reservation.endDate)
             })
-            dates=[...dates,...range]
+             dates=[...dates,...range]
+             
         })
+        return dates
     },[reservations])
 
     const [isLoading,setIsLoading] = useState(false)
     const [totalPrice,setTotalPrice] = useState(listing.price)
     const [dateRange,setDateRange] = useState<Range>(initialDateRange)
 
-    const onCreateReservation=useCallback(async()=>{
+    const onCreateReservation=useCallback(()=>{
         if(!currentUser){
             return loginModal.onOpen()
         }
         setIsLoading(true)
-       await axios.post('/api/reservations',{
+        axios.post('/api/reservations',{
             totalPrice,
             startDate:dateRange.startDate,
             endDate:dateRange.endDate,
@@ -88,7 +89,7 @@ const ListingClient : React.FC<ListingClientProps> =({
                 setTotalPrice(listing.price)
             }
         }
-    },[dateRange.endDate,dateRange.startDate,listing.price])
+    },[dateRange,listing.price])
 
     const category = useMemo(()=>{
         return categories.find((item)=>item.label ===listing.category)
@@ -125,7 +126,7 @@ const ListingClient : React.FC<ListingClientProps> =({
                         dateRange={dateRange}
                         onSubmit={onCreateReservation}
                         disabled={isLoading}
-                       disabledDates={disabledDates}
+                        disabledDates={disabledDates}
                     />
                 </div>
             </div>
