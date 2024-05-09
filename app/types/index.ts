@@ -24,5 +24,6 @@ Reservations,
     createdAt:string;
     startDate:string;
     endDate:string;
-    listing:safeListing
+    listing:safeListing;
+    
 }

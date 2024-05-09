@@ -18,6 +18,7 @@ const ListingPage= async({params}:{params:IParams})=> {
   const listing = await getListingById(params)
   const currentUser= await getCurrentUser()
   const reservations=await getReservations(params)
+ 
 
   if(!listing){
     return(

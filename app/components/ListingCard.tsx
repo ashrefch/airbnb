@@ -3,7 +3,7 @@
 
 import { Listing, Reservations } from '@prisma/client'
 import React, { useCallback, useMemo } from 'react'
-import { SafeUser, safeListing } from '../types';
+import { SafeUser, safeListing, safeReservations } from '../types';
 import { useRouter } from 'next/navigation';
 import useCountries from '../hooks/useCountries';
 import {format} from 'date-fns'
@@ -19,6 +19,7 @@ interface ListingCardProps{
     actionLabel?:string;
     actionId?:string;
     currentUser?:SafeUser | null;
+    price?:number;
 }
 
 const ListingCard:React.FC<ListingCardProps>=({
@@ -33,6 +34,7 @@ currentUser
     const router=useRouter()
     const{getByValue} = useCountries()
     const location=getByValue(data.locationValue)
+    console.log("reservation",reservation)
 
     const handleCancel=useCallback((e:React.MouseEvent<HTMLButtonElement>)=>{
         e.stopPropagation()
@@ -40,11 +42,12 @@ currentUser
         onAction?.(actionId)
     },[actionId,onAction,disabled])
 
-    const price=useMemo(()=>{
-        if(reservation){
-            return reservation.totalPrice
+    const finalPrice=useMemo(()=>{
+
+        if(reservation?.totalPrice){
+            return reservation?.totalPrice
         }
-        return data.price
+        return data?.price
     },[data.price,reservation])
 
     const reservationDate=useMemo(()=>{
@@ -91,7 +94,7 @@ currentUser
         </div>
         <div className='flex flex-row items-center gap-1'>
             <div className='font-semibold'>
-                $ {price} 
+                $ {finalPrice} 
             </div>
             {!reservation && (
                 <div className='font-light '>
