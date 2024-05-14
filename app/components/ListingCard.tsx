@@ -34,7 +34,7 @@ currentUser
     const router=useRouter()
     const{getByValue} = useCountries()
     const location=getByValue(data.locationValue)
-    console.log("reservation",reservation)
+    
 
     const handleCancel=useCallback((e:React.MouseEvent<HTMLButtonElement>)=>{
         e.stopPropagation()
