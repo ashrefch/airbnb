@@ -33,7 +33,7 @@ const HelpItem:React.FC<HelpItemProps> =({
         rounded-lg
         p-4
         mt-8
-        cursor-help
+        cursor-pointer
         ${active ? 'text-white':'text-black'}
         ${active ? 'bg-rose-500':'bg-white'}
         `}>
