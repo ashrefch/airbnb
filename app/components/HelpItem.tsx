@@ -19,6 +19,7 @@ const HelpItem:React.FC<HelpItemProps> =({
     const handleToggle=useCallback(()=>{
         setActive((value)=>!value)
     },[])
+    console.log("helloooo")
 
     return(
         <div 
