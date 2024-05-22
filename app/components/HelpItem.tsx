@@ -36,7 +36,7 @@ const HelpItem:React.FC<HelpItemProps> =({
         mt-8
         cursor-pointer
         ${active ? 'text-white':'text-black'}
-        ${active ? 'bg-rose-400':'bg-white'}
+        ${active ? 'bg-rose-500':'bg-white'}
         `}>
          <div>{title}</div>
         <Icon size={50}/>
