@@ -7,19 +7,22 @@ import { useCallback, useState } from "react";
 
 interface HelpItemProps{
     title:string;
-    icon:IconType
+    icon:IconType;
+    onClick:()=>void;
 }
 
 const HelpItem:React.FC<HelpItemProps> =({
     title,
-    icon:Icon
+    icon:Icon,
+    onClick
 })=>{
     const [active,setActive] = useState(false)
 
     const handleToggle=useCallback(()=>{
         setActive((value)=>!value)
+        onClick()
     },[])
-    console.log("helloooo")
+    
 
     return(
         <div 
@@ -35,8 +38,9 @@ const HelpItem:React.FC<HelpItemProps> =({
         p-4
         mt-8
         cursor-pointer
-        ${active ? 'text-white':'text-black'}
-        ${active ? 'bg-rose-500':'bg-white'}
+        hover:text-white
+        hover:bg-rose-400
+       
         `}>
          <div>{title}</div>
         <Icon size={50}/>
