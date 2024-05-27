@@ -29,7 +29,7 @@ const CancelReservation=()=>{
                     <li>4. Click on <b>Cancel your reservation</b></li>
                 </ul>
                 <div className="text-2xl text-black font-semibold">Verify if you get refund :</div>
-                <div>You can quickly <b className="cursor-pointer"><u>verify if you have a refund or not</u></b> before canceling</div>
+                <div>You can quickly <b className="cursor-pointer"><u>verify if you have a refund or not</u></b> before canceling your trip</div>
             </div>
            
         </Container>
